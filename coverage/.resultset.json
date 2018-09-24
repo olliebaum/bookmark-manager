@@ -1,0 +1,15 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/ollie/projects/github/bookmark-manager/spec/features/hello_world_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1537798369
+  }
+}
