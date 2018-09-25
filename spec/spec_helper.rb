@@ -1,9 +1,10 @@
-# frozen_string_literal: true
+ENV['ENVIRONMENT'] = 'test'
 
 require 'simplecov'
 require 'simplecov-console'
 require 'capybara/rspec'
 require './app'
+require_relative './setup_test_database'
 
 Capybara.app = BookmarkApp
 
@@ -15,6 +16,11 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 SimpleCov.start
 
 RSpec.configure do |config|
+
+  config.before(:each) do
+    setup_test_database
+  end
+
   config.after(:suite) do
     puts
     puts "\e[33mAll tests passing? COMMIT and PUSH to GitHub!!!\e[0m"

@@ -7,3 +7,7 @@
 <% session[:bookmarks].list_all.each {|bm| %>
   <%= bm %> <br>
 <% } %>
+
+<% session[:bookmarks].all.each {|bm| %>
+  <%= bm %> <br>
+<% } %>
