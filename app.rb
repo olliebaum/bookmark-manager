@@ -1,15 +1,27 @@
 require 'sinatra/base'
+require './lib/bookmark_manager'
+require './lib/bookmark'
 
-class BookmarkManager < Sinatra::Base
+class BookmarkApp < Sinatra::Base
   enable :sessions
   set :session_secret, 'something secret'
 
   get '/' do
-    'Hello world'
+    session[:bookmarks] = BookmarkManager.new
+    redirect '/bookmarks'
   end
 
   get '/bookmarks' do
     erb(:bookmarks)
+  end
+
+  get '/add' do
+    erb(:add)
+  end
+
+  post '/add' do
+    session[:bookmarks].add(params[:title], params[:url])
+    redirect '/bookmarks'
   end
 
 end
